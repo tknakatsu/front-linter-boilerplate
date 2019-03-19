@@ -1,0 +1,70 @@
+{
+  "name": "frontend-boilerplate",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@coreui/coreui": "^2.1.8",
+    "@coreui/icons": "^0.3.0",
+    "@storybook/addon-a11y": "^5.0.2",
+    "@storybook/addon-actions": "^5.0.2",
+    "@storybook/addon-knobs": "^5.0.2",
+    "@storybook/addon-links": "^5.0.2",
+    "@storybook/addon-storysource": "^5.0.2",
+    "@storybook/vue": "^5.0.2",
+    "@vue/cli": "^3.5.1",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "babel-preset-vue": "^2.0.2",
+    "css-loader": "^2.1.1",
+    "eslint": "^5.15.3",
+    "eslint-config-google": "^0.12.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-vue": "^5.2.2",
+    "husky": "^1.3.1",
+    "jquery": "^3.3.1",
+    "json-server": "^0.14.2",
+    "lint-staged": "^8.1.5",
+    "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
+    "perfect-scrollbar": "^1.4.0",
+    "popper": "^1.0.1",
+    "reset-css": "^4.0.1",
+    "storybook-addon-vue-info": "^1.0.0",
+    "stylelint": "^9.10.1",
+    "stylelint-config-rational-order": "^0.0.4",
+    "stylelint-scss": "^3.5.4",
+    "vue": "^2.6.9",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.9",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1",
+    "webpack-merge": "^4.2.1"
+  },
+  "scripts": {
+    "storybook": "cd front && start-storybook",
+    "prettier:check": "prettier --config .prettierrc -l 'front/**/*.{js,vue}'",
+    "prettier:format": "prettier --config .prettierrc --write 'front/**/*.{js,vue}'",
+    "eslint:dry-run": "eslint --fix-dry-run \"front/**/*.{js,vue}\"",
+    "eslint:fix": "eslint --fix \"front/**/*.{js,vue}\"",
+    "stylelint": "stylelint --fix front/src/sass/**/*.scss"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "npm run eslint:dry-run -s",
+      "npm run prettier:format",
+      "git add"
+    ],
+    "*.scss": [
+      "npm run stylelint -s",
+      "git add"
+    ]
+  }
+}
